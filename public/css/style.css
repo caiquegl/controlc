@@ -1,0 +1,27 @@
+.h100{
+    height: 100vh;
+}
+
+.bgManutention{
+    background-color: #f07319;
+    background-image: url('../img/ecomerce/bgSvg.svg');
+    background-size: cover;
+}
+
+.descriManutencao h3{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+.descriManutencao p{
+    letter-spacing: 2px;
+    color: white;
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 20px;
+}
