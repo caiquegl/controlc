@@ -8,6 +8,9 @@ const bodyController = require("../controller/bodyController");
 
 
 router.get('/', bodyController.home);
+router.get('/produtos', bodyController.produtos);
+router.get('/infoProdutos', bodyController.infoProdutos);
+router.get('/faleConosco', bodyController.faleConosco);
 
 
 module.exports = router;

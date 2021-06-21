@@ -9,14 +9,18 @@ const {Pedido,produtos,enderecos,carrinhos,mapas} = require("../models");
 
 const bodyController = {
     home: async(req, res) => {
-      // const con = new Sequelize(config);
+        return res.render("index", {title: 'Home'});
+    },
 
-      //   const produtosDb = await con.query("select * from produtos",
-      //     {
-      //       type: Sequelize.QueryTypes.SELECT,
-      //     }
-      //   );
-        return res.render("index", {title: 'Manutenção'});
+    produtos: async(req, res) => {
+      return res.render("produtos", {title: 'Produtos'});
+    },
+
+    infoProdutos: async(req, res) => {
+      return res.render("infoProdutos", {title: 'Info produtos'});
+    },
+    faleConosco: async(req, res) => {
+      return res.render("faleConosco", {title: 'False Conosco'});
     },
 };
 

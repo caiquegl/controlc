@@ -1,50 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title> <%=  %> </title> -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="shortcut icon" href="/img/favicon.ico">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <title> <%=  %> </title> -->
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/slick-theme.css">
+  <link rel="stylesheet" href="/css/slick.css">
+  <link rel="shortcut icon" href="/img/favicon.ico">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
 
 </head>
-<body onload=getNoticias()>
-    <header>
-        <nav class="navbar navbar-expand-lg fixed-top">
-            <a href="/"><img src="/img/Learning map-logo - black.png" alt="Logo"></a>
-            
-            <button class="navbar-toggler navbar-dark bg-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                  <a class="nav-link" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/noticia">Notícias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/ecomerce">Loja Virtual</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/mapa">Mapa</a>
-                </li>
-              </ul>
-              <form class="form-inline my-2 my-lg-0 btn-pai">
-                <% if(typeof usuario === 'undefined') {%>
-                  <a href="/registro"><button class="btn btn-outline-success my-2 my-sm-0 btn-nav-regis" type="button">Registar</button></a>
-                  <a href="/login"><button class="btn btn-outline-success my-2 my-sm-0 btn-nav-login" type="button">Login</button></a>
-                <% }else { %>
-                  <a class="nav-link" href="/carrinho"><img src="/img/ecomerce/carrinho.png" class="carri-log"><%= quantItens.count %></a>
-                   <h4>Bem vindo <a href="/cliente"><%= usuario.nome %></a> </h4>
-                   <a href="/logout"> <img src="/img/log-out.svg" class="log"></a>
-                <% } %>
-              </form>
-            </div>
-          </nav>        
-    </header>
+
+<body>
+  <header class="container-fluid bgDark">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="/img/logoDark.png" class="logoHeaders">
+      </div>
+      <div class="col-md-6 d-flex justify-content-end">
+        <ul class="listHeader d-flex">
+          <li>
+            <a href="/">
+              HOME
+            </a>
+          </li>
+          <li>
+            <a href="/produtos">
+              PRODUTOS
+            </a>
+          </li>
+          <li>
+            <a href="/faleConosco">
+              FALE CONOSCO
+            </a>
+          </li>
+        </ul>
+        <div class="dropdown" style="padding-top: 5px;">
+          <div class="userHeader dropdown-toggle"  id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="./img/user.svg" alt="" srcset="">
+          </div>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">Logar</a></li>
+            <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
