@@ -31,18 +31,17 @@ const bodyController = {
           id_setor:setor ? parseInt(setor) : sector[0].id_setor
         }
       })
-
       pagination.total = Math.ceil(productCount / 10)
+      console.log('aquiiiii', pagination)
 
       const produto = await produtos.findAll({
         where:{
           id_setor:setor ? parseInt(setor) : sector[0].id_setor
         },
-        offset: (parseInt(page) - 1) * 10,
+        offset: (parseInt(pagination.page) - 1) * 10,
         limit: 10
       })
 
-      console.log((parseInt(page) - 1) * 10)
       return res.render("produtos", {title: 'Produtos', usuario: req.session.usuario, setor: sector, produto, pagination});
     },
 
