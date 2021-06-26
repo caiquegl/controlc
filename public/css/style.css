@@ -190,7 +190,7 @@ ion-icon {
     border: none;
     width: 100%;
     color: white;
-    background-color: rgb(80, 80, 80);
+    background-color: #f27124;
 }
 
 .listProducts{
@@ -228,6 +228,19 @@ ion-icon {
 }
 .dataInfo h5{
     margin-left: 15px;
+}
+
+.cardLogin{
+    width: 400px;
+    padding: 30px;
+    min-height: 500px;
+}
+
+.columnAround{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 400px;
 }
 
 @media (max-width: 600px){

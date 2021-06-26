@@ -1,0 +1,102 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3 style="text-align: center;">Cadastrar produto</h3>
+    </div>
+    <div class="col-md-12">
+        <form action="/createProduto" method="POST" enctype="multipart/form-data" >
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="login">Nome:</label>
+                    <input class="form-control" type="text" placeholder="Nome do setor" name="nome" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="login">Pequena descrição:</label>
+                    <textarea required name="slow_description" class="form-control" placeholder="Faça uma pequena descrição" style="height: 100px" maxlength="112"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="login">Valor do produto:</label>
+                    <input required class="form-control money" type="text" placeholder="Valor do produto" name="value">
+                </div>
+                <div class="col-md-6">
+                    <label for="login">Descrição:</label>
+                    <textarea required name="description" class="form-control" placeholder="Faça uma pequena descrição" style="height: 200px"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="login">Setor:</label>
+                    <select required class="form-select form-control" aria-label="Selecione o setor" name="id_setor">
+                        <option selected>Selecione o setor</option>
+                        <% setor.forEach(item => {%> 
+                            <option value="<%= item.id_setor %>"><%= item.nome %></option>
+                        <% }); %>
+                      </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="login">Insira a foto:</label>
+                    <input required type="file" class="form-control-file" id="exampleFormControlFile1" multiple name="foto">
+                </div>
+                <div class="col-md-6">
+                    <label for="login">Quantidade em estoque:</label>
+                    <input required class="form-control" type="number" placeholder="Quantidade em estoque" name="stock">
+                </div>
+                <div class="col-md-6" style="display: flex; align-items: center; justify-content: center;">
+                  <button class="btn btn-warning" type="submit" data-toggle="modal" data-target="#exampleModalCenter" style="width: 200px;">Criar</button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <h3 style="text-align: center;">Listar setores</h3>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Ativo</th>
+                  <th scope="col">Valor</th>
+                  <th scope="col">Descrição</th>
+                  <th scope="col">Em estoque</th>
+                  <th scope="col">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% produto.forEach(item => {%> 
+                    <tr>
+                        <td><%= item.nome %></td>
+                        <td> 
+                            <% if(item.is_active) {%>
+                                Ativo
+                            <% }else { %>
+                                Inativo
+                            <% } %>
+                        </td>
+                        <td><%= item.value %></td>
+                        <td><%= item.description %></td>
+                        <td><%= item.stock %></td>
+
+                        <td>
+                            <form action="/activeProduct" method="post">
+                                <% if(item.is_active) {%>
+                                    <input type="text" name="id_produto" value="<%= item.id_produto %>" style="display: none;" readonly>
+                                    <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Inativar">
+                                        Inativar
+                                    </button>
+                                <% }else { %>
+                                    <input type="text" name="id_produto" value="<%= item.id_produto %>" style="display: none;" readonly>
+                                    <button type="submit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Ativar">
+                                        Ativar
+                                    </button>
+                                <% } %>
+                            </form>
+
+                        </td>
+                    </tr>
+                <% }); %>
+              </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/jquery.mask.js" type="text/javascript" charset="utf-8"></script>

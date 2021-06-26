@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <title> <%=  %> </title> -->
+  <title> <%=  %> </title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/slick-theme.css">
   <link rel="stylesheet" href="/css/slick.css">
@@ -13,7 +13,6 @@
 
 
 </head>
-
 <body>
   <header class="container-fluid bgDark">
     <div class="row">
@@ -38,16 +37,23 @@
             </a>
           </li>
         </ul>
+        <% if(!usuario) {%>
         <div class="dropdown" style="padding-top: 5px;">
           <div class="userHeader dropdown-toggle"  id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false">
             <img src="./img/user.svg" alt="" srcset="">
           </div>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li><a class="dropdown-item" href="#">Logar</a></li>
-            <li><a class="dropdown-item" href="#">Cadastrar</a></li>
-          </ul>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="/login">Logar</a></li>
+              <li><a class="dropdown-item" href="/cadastro">Cadastrar</a></li>
+            </ul>
         </div>
+        <% }else { %>
+          <div class="status" style="display: flex; align-items: center; justify-content: center;">
+            <h4 style="font-size: 17px; margin: 0;">Bem vindo <a href="/cliente" style="text-decoration: none; color: #fd7c0d;"><%= usuario.nome %></a> </h4>
+            <a href="/logout" style="text-decoration: none; font-size: 17px; color: white; margin-left: 20px;"> <img src="/img/log-out.svg" class="log"></a>
+          </div>
+       <% } %>
       </div>
     </div>
   </header>

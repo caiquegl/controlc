@@ -6,154 +6,51 @@
     <div class="widthCardCategory">
       <div class="cardCategory">
         <h5>Categorias</h5>
+        <% setor.forEach(item => {%> 
           <p>
-            teste
+            <a href="/produtos?setor=<%= item.id_setor %>" style="text-decoration: none; color: rgb(80, 80, 80)">
+              <%= item.nome %>
+            </a>
           </p>
-          <p>
-            teste
-          </p>
-          <p>
-            teste
-          </p>
-          <p>
-            teste
-          </p>
-          <p>
-            teste
-          </p>
-          <p>
-            teste
-          </p>
+        <% }); %>
       </div>
     </div>
-      
+
       <div class="listProducts">
 
         <div style="width: 100%; display: flex; justify-content: flex-end;">
           <nav aria-label="...">
             <ul class="pagination">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item" aria-current="page">
-                <a class="page-link" href="#">2</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Avançar</a>
-              </li>
+              <% for(var i = 1; i < pagination.total + 1 ; i++){ %> 
+                <% if(i == pagination.page){ %> 
+                  <li class="page-item active">
+                    <a class="page-link" href="/produtos?setor=<%= pagination.setor %>&page=<%= i %>"><%= i %></a>
+                  </li>
+                <% }else{ %> 
+                  <li class="page-item">
+                    <a class="page-link" href="/produtos?setor=<%= pagination.setor %>&page=<%= i %>"><%= i %></a>
+                  </li>
+                <% } %> 
+
+              <% } %> 
             </ul>
           </nav>
         </div>
+        <% if(produto.length == 0){ %> 
+          <h3>Nenhum produto ativo no momento</h3>
+        <% } %> 
+
+        <% produto.forEach(item => {%> 
 
         <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
+          <img src="<%= item.photo %>" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
+            <h5 class="card-title" style="text-transform: capitalize;"><%= item.nome %></h5>
+            <p class="card-text maxCaracter"><%= item.slow_description %></p>
+            <a href="infoProdutos?id=<%= item.id_produto %>" class="btn btn-warning" style="width: 100%;">Verificar</a>
           </div>
         </div>
-
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem; margin-bottom: 30px;">
-          <img src="/img/ecomerce/phoneTeste.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Telefone teste</h5>
-            <p class="card-text maxCaracter">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam nostrum temporibus consectetur dolores! Incidunt vel rem neque alias itaque? Voluptatem! </p>
-            <a href="infoProdutos" class="btn btn-warning" style="width: 100%;">Verificar</a>
-          </div>
-        </div>
+        <% }); %>
 
       </div>
   </div>
