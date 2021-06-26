@@ -9,7 +9,7 @@ const userController = {
         const listaDeErrors = validationResult(req)
         const { email, password, Confirmpassword, telResidencial, tel, CPF, nome, nascimento, sexo, ofertas } = req.body;
         if(password != Confirmpassword){
-            return res.render("cadastro", { passDif: ['Senhas diferentes'] })
+            return res.render("cadastro", { passDif: 'Senhas diferentes'})
         }
         const hashPassword = bcrypt.hashSync(password, 8);
         if (listaDeErrors.isEmpty()) {
@@ -21,6 +21,7 @@ const userController = {
           if (!usuario.length < 1) {
             return res.render("cadastro", {
               msg: "Conta ja cadastrada",
+              usuario: req.session.usuario
             });
           } else {
             const user = await users.create({
@@ -40,10 +41,10 @@ const userController = {
             });
           }
     
-          return res.redirect("login",{ usuario: req.session.usuario});
+          return res.render("login", {usuario: req.session.usuario});
         } else {
           console.log('estou aqui'+listaDeErrors);
-          return res.render("cadastro", { errors: listaDeErrors.errors, usuario: req.session.usuario })
+          return res.render("cadastro", { errors: listaDeErrors.errors})
         }
     },
 
