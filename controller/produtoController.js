@@ -11,11 +11,15 @@ const dataUpload = {
 
   const uploadFoto = async(files) =>{
     const linksFotos = [];
-    await files.forEach(async function(element, index){
-      await cloudinary.v2.uploader.upload(element.path, dataUpload,async function(error, result) {
-        await linksFotos.push(result.url)
+    try {
+      await files.forEach(async function(element, index){
+        await cloudinary.v2.uploader.upload(element.path, dataUpload,async function(error, result) {
+          await linksFotos.push(result.url)
+        });
       });
-    });
+    } catch (error) {
+      console.log(error);
+    }
     return linksFotos;
 
   }
@@ -23,41 +27,44 @@ const produtoController = {
     createProduto: async(req, res) => {
         const { nome, slow_description, value, description, id_setor, stock } = req.body;
         const files = req.files;
+        
         const linksFotos = await uploadFoto(files)
 
         
-
-        await logs.create({
-          firstName: 'CRiação de produto',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        })
-        console.log(linksFotos[0])
-        console.log('jshjdhgsj',linksFotos)
-
-        const product = await produtos.create({
-          nome,
-          slow_description,
-          value,
-          description,
-          id_setor,
-          stock,
-          photo: linksFotos[0],
-          is_active: true,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        })
-
-        await linksFotos.forEach(async function(element){
-          await fotos.create({
-            id_produto: product.id_produto,
-            photo: element,
+        setTimeout(async () => {
+          await logs.create({
+            firstName: 'CRiação de produto',
             createdAt: new Date(),
             updatedAt: new Date(),
           })
-        });       
+  
+  
+          const product = await produtos.create({
+            nome,
+            slow_description,
+            value,
+            description,
+            id_setor,
+            stock,
+            photo: linksFotos[0],
+            is_active: true,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          })
+  
+          await linksFotos.forEach(async function(element){
+            await fotos.create({
+              id_produto: product.id_produto,
+              photo: element,
+              createdAt: new Date(),
+              updatedAt: new Date(),
+            })
+          });      
+          return res.redirect("pageAdmin");
+ 
+        }, 10000);
+        
     
-      return res.redirect("pageAdmin");
     },
     activeProduct: async(req, res) => {
       const { id_product } = req.body;
